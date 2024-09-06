@@ -2,9 +2,11 @@
 This is a project that contains a backend and frontend in a single project. Nodejs and React. Both use typescript. Each project may have a separate readme with instructions for cloning & setup & development
 
 ## General Setup
-- clone this project and rename the clone
+- clone this project and rename the clone `git clone git@github.com:jdpabst/full-stack-seed.git new-name-for-project`
 - create a new Github repo
 - connect the cloned project to the new github repo `git remote set-url origin <new github repo url>`
+- `git remote -v` - to check that it worked
+- `npm i` on the frontend and backend folders
 - create a `.env` file in the `backend` project, using the `.env.example` file as a guide
 - create a `.env` file in the `frontend` project, using the `.env.example` file as a guide
 
