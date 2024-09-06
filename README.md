@@ -2,9 +2,11 @@
 This is a project that contains a backend and frontend in a single project. Nodejs and React. Both use typescript. Each project may have a separate readme with instructions for cloning & setup & development
 
 ## General Setup
-- Clone this project, rename it, and create a new Github repo
-- connect this project to the new github repo
-- create a `.env` file in the backend project, using the `.env.example` file as a guide
+- clone this project and rename the clone
+- create a new Github repo
+- connect the cloned project to the new github repo `git remote set-url origin <new github repo url>`
+- create a `.env` file in the `backend` project, using the `.env.example` file as a guide
+- create a `.env` file in the `frontend` project, using the `.env.example` file as a guide
 
 ## Development
 - To spin up the DB, run `dc up -d` or `docker-compose up -d`
