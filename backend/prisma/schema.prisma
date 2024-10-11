@@ -23,3 +23,17 @@ model User {
   lastName  String?
 }
 
+model TimeCommitments {
+  id        Int       @id @default(autoincrement())
+  name      String
+  loggedTimes  LoggedTimes[]
+}
+
+model LoggedTimes {
+  id            Int         @id @default(autoincrement())
+  createdAt     DateTime    @default(now())
+  hours         Int
+  timeCommitmentsId  Int
+  timeCommitments    TimeCommitments  @relation(fields: [timeCommitmentsId], references: [id])
+}
+
