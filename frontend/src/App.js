@@ -7,15 +7,25 @@ import Header from './components/Header/Header';
 function App() {
 
   useEffect(() => {
-    exampleApiCall();
+    // getLoggedTimes();
+    // getTimeCommitments();
+    getTrackedTimes();
   }, [])
 
-  // example of talking to the api
-  async function exampleApiCall() {
-    const result = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/health`)
-    console.log(result)
-  }
+  // async function getLoggedTimes() {
+  //   const times = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/logged`);
+  //   console.log(times)
+  // }
 
+  // async function getTimeCommitments() {
+  //   const commitments = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/commitments`);
+  //   console.log(commitments)
+  // }
+
+  async function getTrackedTimes() {
+    const trackedTimes = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/tracked-times`);
+    console.log(trackedTimes)
+  }
 
   return (
     <div className="App">
