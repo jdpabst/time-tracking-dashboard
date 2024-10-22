@@ -12,10 +12,12 @@
   // border: 1px solid lime;
   height: 60%;
   width: 70%;
+  display: flex;
+  justify-content: space-between;
 
   .profile-container {
    // border: 1px solid pink;
-   border-radius: 20px;
+   border-radius: 15px;
    background-color: hsl(235, 46%, 20%);
    width: 23%;
    height: 100%;
@@ -26,7 +28,7 @@
     flex-direction: column;
     align-items: flex-start;
     height: 70%;
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: hsl(246, 80%, 60%);
 
     img {
@@ -67,6 +69,113 @@
     }
    }
 
+  }
+
+  .commitments-container {
+   // border: 1px solid blue;
+   display: flex;
+   justify-content: space-around;
+   flex-direction: row;
+   flex-wrap: wrap;
+   row-gap: 30px;
+   column-gap: 20px;
+   width: 75%;
+   position: relative;
+
+   .icon {
+    height: 70px;
+    position: absolute;
+    top: -10px;
+    right: 15px;
+   }
+
+   .commitment {
+    // border: 1px solid hotpink;
+    width: 30%;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+
+
+    .content {
+     background: hsl(235, 46%, 20%);
+     border-radius: 15px;
+     width: 100%;
+     height: 80%;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     padding-top: 20px;
+    }
+
+    .heading {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 80%;
+     margin: 0 auto;
+
+     h2 {
+      font-size: 17px;
+     }
+
+     img {
+      height: 4px;
+     }
+
+     img:hover {
+      cursor: pointer;
+      filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(126deg) brightness(100%) contrast(103%);
+     }
+    }
+
+    .times {
+     margin-left: 30px;
+     text-align: left;
+    }
+   }
+
+   .content:hover {
+    background-color: hsl(236, 38%, 35%);
+    cursor: pointer;
+   }
+
+   .work {
+    background-color: hsl(15, 100%, 70%);
+   }
+
+   .play {
+    background-color: hsl(195, 74%, 62%);
+   }
+
+   .study {
+    background-color: hsl(348, 100%, 68%);
+   }
+
+   .exercise {
+    background-color: hsl(145, 58%, 55%);
+
+    img {
+     height: 50px;
+     top: -2px;
+    }
+   }
+
+   .social {
+    background-color: hsl(264, 64%, 52%);
+
+    img {
+     height: 90px;
+    }
+   }
+
+   .self-care {
+    background-color: hsl(43, 84%, 65%);
+
+    img {
+     height: 60px;
+    }
+   }
   }
 
  }
