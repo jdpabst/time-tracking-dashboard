@@ -3,25 +3,26 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+ await prisma.timeCommitments.deleteMany({});
  await prisma.timeCommitments.createMany({
   data: [
    {
-    "name": "work"
+    "name": "Work"
    },
    {
-    "name": "play"
+    "name": "Play"
    },
    {
-    "name": "study"
+    "name": "Study"
    },
    {
-    "name": "exercise"
+    "name": "Exercise"
    },
    {
-    "name": "social"
+    "name": "Social"
    },
    {
-    "name": "selfCare"
+    "name": "Self Care"
    }
   ]
 

@@ -1,6 +1,14 @@
-import './Home.scss'
+import { useState } from 'react';
+import Commitments from '../Commitments/Commitments';
+import './Home.scss';
 
 export default function Home() {
+ const [timeFrame, setTimeFrame] = useState()
+
+ function handleTimeToggle(str) {
+  setTimeFrame(str);
+ }
+
  return (
   <div className='main-container'>
    <div className='content-container'>
@@ -14,91 +22,12 @@ export default function Home() {
       </div>
      </div>
      <div className='time-selections'>
-      <p>Daily</p>
-      <p>Weekly</p>
-      <p>Monthly</p>
+      <p className={timeFrame === 'daily' ? 'active' : ''} onClick={() => handleTimeToggle('daily')}>Daily</p>
+      <p className={timeFrame === 'weekly' ? 'active' : ''} onClick={() => handleTimeToggle('weekly')}>Weekly</p>
+      <p className={timeFrame === 'monthly' ? 'active' : ''} onClick={() => handleTimeToggle('monthly')}>Monthly</p>
      </div>
     </div>
-    <div className='commitments-container'>
-     <div className='work commitment'>
-      <img className='icon' src='/assets/images/icon-work.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-     <div className='play commitment'>
-      <img className='icon' src='/assets/images/icon-play.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-     <div className='study commitment'>
-      <img className='icon' src='/assets/images/icon-study.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-     <div className='exercise commitment'>
-      <img className='icon' src='/assets/images/icon-exercise.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-     <div className='social commitment'>
-      <img className='icon' src='/assets/images/icon-social.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-     <div className='self-care commitment'>
-      <img className='icon' src='/assets/images/icon-self-care.svg' />
-      <div className='content'>
-       <div className='heading'>
-        <h2>Work</h2>
-        <img src='/assets/images/icon-ellipsis.svg' />
-       </div>
-       <div className='times'>
-        <h1>hrs</h1>
-        <h3>Last</h3>
-       </div>
-      </div>
-     </div>
-    </div>
+    < Commitments timeFrame={timeFrame} />
    </div>
   </div>
  )
