@@ -1,7 +1,6 @@
 .main-container {
  height: 100vh;
  width: 100vw;
- background-color: hsl(226, 43%, 10%);
  display: flex;
  justify-content: center;
  align-items: center;
@@ -42,13 +41,13 @@
      p {
       color: hsl(236, 100%, 87%);
       text-align: left;
-      font-size: 14px;
+      font-size: 1vw;
      }
 
      h1 {
       text-align: left;
       font-weight: 300;
-      font-size: 38px;
+      font-size: 2.5vw;
      }
     }
    }
@@ -98,6 +97,7 @@
     width: 30%;
     border-radius: 15px;
     position: relative;
+    // this is causing the issue of disappearing at mobile size
     overflow: hidden;
 
 
@@ -182,5 +182,27 @@
    }
   }
 
+ }
+}
+
+@media screen and (max-width: 880px) {
+ .main-container {
+  // border: 2px solid orange;
+  flex-direction: column;
+
+  .content-container {
+   // display: flex;
+   flex-direction: column;
+
+   .commitments-container {
+    border: 1px solid blue;
+    flex-direction: column;
+
+    .commitment {
+     overflow: visible;
+
+    }
+   }
+  }
  }
 }
