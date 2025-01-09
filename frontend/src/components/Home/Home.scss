@@ -8,10 +8,7 @@
  color: white;
 
  .content-container {
-  height: 60%;
-  width: 70%;
   display: flex;
-  justify-content: space-between;
 
   .profile-container {
    border-radius: 15px;
@@ -28,7 +25,6 @@
     }
 
     .user-name {
-     border: 1px solid blue;
 
      p {
       color: hsl(236, 100%, 87%);
@@ -43,12 +39,8 @@
    }
 
    .time-selections {
-    padding: 20px 30px;
-    text-align: left;
 
     p {
-     font-size: 17px;
-     margin-bottom: 15px;
      color: hsl(235, 45%, 61%)
     }
 
@@ -103,7 +95,7 @@
      align-items: center;
      width: 80%;
      margin: 0 auto;
-     padding-bottom: 20px;
+     // padding-bottom: 20px;
 
      h2 {
       font-size: 17px;
@@ -120,18 +112,12 @@
     }
 
     .times {
-     margin-left: 30px;
-     text-align: left;
      display: flex;
-     flex-wrap: wrap;
-     align-items: flex-start;
      width: 80%;
      margin: 0 auto;
 
      h1 {
-      font-size: 50px;
       font-weight: 200;
-      padding-bottom: 8px;
      }
 
      h3 {
@@ -192,7 +178,10 @@
  .main-container {
 
   .content-container {
+   height: 60%;
+   width: 70%;
    flex-direction: row;
+   justify-content: space-between;
 
    .profile-container {
     width: 23%;
@@ -254,6 +243,22 @@
      width: 30%;
      flex-direction: column;
 
+     .heading {
+      margin-bottom: 20px;
+     }
+
+     .times {
+      margin-left: 30px;
+      text-align: left;
+      flex-wrap: wrap;
+      align-items: flex-start;
+
+      h1 {
+       font-size: 50px;
+       padding-bottom: 8px;
+      }
+     }
+
     }
    }
   }
@@ -263,56 +268,54 @@
 
 @media screen and (max-width: 880px) {
  .main-container {
+  padding-top: 50px;
 
   .content-container {
+   height: 100%;
+   width: 85%;
    flex-direction: column;
 
    .profile-container {
     width: 100%;
     height: 150px;
+    margin-bottom: 25px;
 
     .user-info {
-     padding: 10px 10px;
-     flex-direction: column;
+     padding: 10px 20px;
+     flex-direction: row;
+     align-items: center;
      width: 100%;
      height: 70%;
 
      img {
       height: 55px;
       border: 2px solid white;
-      // margin-bottom: 35px;
+      margin-right: 15px;
      }
 
      .user-name {
       p {
-       font-size: 2vw;
+       font-size: 3vw;
       }
 
       h1 {
        text-align: left;
        font-weight: 300;
-       font-size: 2.5vw;
+       font-size: 5vw;
       }
      }
     }
 
     .time-selections {
-     padding: 20px 30px;
-     text-align: left;
+     height: 40px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center;
+     // border: 1px solid lime;
 
      p {
-      font-size: 17px;
-      margin-bottom: 15px;
-      color: hsl(235, 45%, 61%)
-     }
-
-     .active {
-      color: white;
-     }
-
-     p:hover {
-      color: white;
-      cursor: pointer;
+      font-size: 3.5vw;
      }
     }
 
@@ -326,6 +329,20 @@
      height: 100%;
      width: 100%;
      flex-direction: column;
+
+     .heading {
+      margin-bottom: 10px;
+     }
+
+
+     .times {
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+       font-size: 30px;
+      }
+     }
 
     }
    }
