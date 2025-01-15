@@ -59,7 +59,7 @@
   .commitments-container {
    display: flex;
    justify-content: space-around;
-   flex-direction: row;
+
    flex-wrap: wrap;
    row-gap: 30px;
    column-gap: 20px;
@@ -174,11 +174,12 @@
  }
 }
 
+
 @media screen and (min-width: 880px) {
  .main-container {
 
   .content-container {
-   height: 60%;
+   // height: 60%;
    width: 70%;
    flex-direction: row;
    justify-content: space-between;
@@ -238,13 +239,14 @@
    .commitments-container {
     width: 75%;
     margin: 0 auto;
+    flex-direction: row;
 
     .commitment {
      width: 30%;
      flex-direction: column;
 
      .heading {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
      }
 
      .times {
@@ -254,7 +256,7 @@
       align-items: flex-start;
 
       h1 {
-       font-size: 50px;
+       font-size: 3.5vw;
        padding-bottom: 8px;
       }
      }
@@ -277,7 +279,7 @@
 
    .profile-container {
     width: 100%;
-    height: 150px;
+    height: 200px;
     margin-bottom: 25px;
 
     .user-info {
@@ -288,34 +290,33 @@
      height: 70%;
 
      img {
-      height: 55px;
+      height: 70px;
       border: 2px solid white;
       margin-right: 15px;
      }
 
      .user-name {
       p {
-       font-size: 3vw;
+       font-size: 4vw;
       }
 
       h1 {
        text-align: left;
        font-weight: 300;
-       font-size: 5vw;
+       font-size: 7vw;
       }
      }
     }
 
     .time-selections {
-     height: 40px;
+     height: 55px;
      display: flex;
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
-     // border: 1px solid lime;
 
      p {
-      font-size: 3.5vw;
+      font-size: 4.75vw;
      }
     }
 
@@ -324,11 +325,14 @@
    .commitments-container {
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 50px;
 
     .commitment {
      height: 100%;
+     overflow: auto;
      width: 100%;
-     flex-direction: column;
+
+
 
      .heading {
       margin-bottom: 10px;
