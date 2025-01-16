@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useUserContext } from 'src/contexts/userStore';
 import './Commitments.scss';
 
@@ -7,6 +8,12 @@ interface CommitmentsProps {
 
 export default function Commitments(timeFrame) {
     const { times } = useUserContext();
+    const [toggleAddTime, setToggleAddTime] = useState(false);
+
+    function toggle() {
+        setToggleAddTime(!toggleAddTime);
+        // console.log(toggleAddTime);
+    }
 
 
 
@@ -18,12 +25,22 @@ export default function Commitments(timeFrame) {
                     <div className='content'>
                         <div className='heading'>
                             <h2>{item.title}</h2>
-                            <img src='/assets/images/icon-ellipsis.svg' />
+                            <img src='/assets/images/icon-ellipsis.svg' onClick={() => toggle()} />
                         </div>
                         {timeFrame.timeFrame === 'daily' ?
                             <div className='times'>
-                                <h1>{item.timeframes.daily.current}hrs</h1>
-                                <h3>Yesterday - {item.timeframes.daily.previous}hrs</h3>
+                                {toggleAddTime === false ?
+                                    <div className='logged-time-views'>
+                                        <h1>{item.timeframes.daily.current}hrs</h1>
+                                        <h3>Yesterday - {item.timeframes.daily.previous}hrs</h3>
+                                    </div>
+                                    :
+                                    <div className="add-time-container">
+                                        <input className='add-time-input' placeholder="0" />
+                                        <h1>hrs</h1>
+                                    </div>
+                                }
+
                             </div>
                             : timeFrame.timeFrame === 'weekly' ?
                                 <div className='times'>

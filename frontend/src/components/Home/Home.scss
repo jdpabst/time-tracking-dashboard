@@ -113,7 +113,7 @@
 
     .times {
      display: flex;
-     width: 80%;
+     // width: 80%;
      margin: 0 auto;
 
      h1 {
@@ -179,7 +179,6 @@
  .main-container {
 
   .content-container {
-   // height: 60%;
    width: 70%;
    flex-direction: row;
    justify-content: space-between;
@@ -250,7 +249,7 @@
      }
 
      .times {
-      margin-left: 30px;
+      // margin-left: 30px;
       text-align: left;
       flex-wrap: wrap;
       align-items: flex-start;
@@ -258,6 +257,32 @@
       h1 {
        font-size: 3.5vw;
        padding-bottom: 8px;
+      }
+
+      .logged-times-view {
+       margin-left: 30px;
+      }
+
+      .add-time-container {
+       width: 80%;
+       margin: 0 auto;
+       display: flex;
+       justify-content: space-between;
+       align-items: baseline;
+
+       .add-time-input {
+        height: 70px;
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid hsl(235, 45%, 61%);
+        font-size: 3.5vw;
+        background-color: hsl(235, 46%, 20%);
+        color: white;
+       }
+
+       .add-time-input::placeholder {
+        color: hsl(235, 45%, 61%);
+       }
       }
      }
 
@@ -340,11 +365,40 @@
 
 
      .times {
-      justify-content: space-between;
-      align-items: center;
+
 
       h1 {
        font-size: 30px;
+      }
+
+      .logged-times-view {
+       width: 80%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-left: 30px;
+      }
+
+      .add-time-container {
+       width: 40%;
+       margin: 0 auto;
+       display: flex;
+       justify-content: space-between;
+       align-items: baseline;
+
+       .add-time-input {
+        height: 50px;
+        width: 60px;
+        border: none;
+        border-bottom: 1px solid hsl(235, 45%, 61%);
+        font-size: 30px;
+        background-color: hsl(235, 46%, 20%);
+        color: white;
+       }
+
+       .add-time-input::placeholder {
+        color: hsl(235, 45%, 61%);
+       }
       }
      }
 

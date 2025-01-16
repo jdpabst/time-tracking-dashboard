@@ -7,6 +7,7 @@ export const UserStore = ({ children }) => {
  const [user, setUser] = useState<User>(null);
  const [times, setTimes] = useState([]);
 
+
  return (
   <UserContext.Provider value={{ user, setUser, times, setTimes }}>
    {children}
