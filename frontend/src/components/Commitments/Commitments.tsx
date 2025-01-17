@@ -8,14 +8,16 @@ interface CommitmentsProps {
 
 export default function Commitments(timeFrame) {
     const { times } = useUserContext();
-    const [toggleAddTime, setToggleAddTime] = useState(false);
+    const [toggleAddTime, setToggleAddTime] = useState<Record<number, boolean>>({});
 
-    function toggle() {
-        setToggleAddTime(!toggleAddTime);
-        // console.log(toggleAddTime);
+    function toggle(id: number) {
+        setToggleAddTime((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id], // Toggle the state for the specific id
+        }));
     }
 
-
+    // console.log(timeFrame.timeFrame)
 
     return (
         <div className='commitments-container'>
@@ -25,12 +27,12 @@ export default function Commitments(timeFrame) {
                     <div className='content'>
                         <div className='heading'>
                             <h2>{item.title}</h2>
-                            <img src='/assets/images/icon-ellipsis.svg' onClick={() => toggle()} />
+                            <img src='/assets/images/icon-ellipsis.svg' onClick={() => toggle(id)} />
                         </div>
-                        {timeFrame.timeFrame === 'daily' ?
+                        {timeFrame.timeFrame == 'daily' ?
                             <div className='times'>
-                                {toggleAddTime === false ?
-                                    <div className='logged-time-views'>
+                                {!toggleAddTime[id] ?
+                                    <div className='logged-times-view'>
                                         <h1>{item.timeframes.daily.current}hrs</h1>
                                         <h3>Yesterday - {item.timeframes.daily.previous}hrs</h3>
                                     </div>
@@ -44,13 +46,31 @@ export default function Commitments(timeFrame) {
                             </div>
                             : timeFrame.timeFrame === 'weekly' ?
                                 <div className='times'>
-                                    <h1>{item.timeframes.weekly.current}hrs</h1>
-                                    <h3>Last Week - {item.timeframes.weekly.previous}hrs</h3>
+                                    {!toggleAddTime[id] ?
+                                        <div className='logged-times-view'>
+                                            <h1>{item.timeframes.daily.current}hrs</h1>
+                                            <h3>Last Week - {item.timeframes.daily.previous}hrs</h3>
+                                        </div>
+                                        :
+                                        <div className="add-time-container">
+                                            <input className='add-time-input' placeholder="0" />
+                                            <h1>hrs</h1>
+                                        </div>
+                                    }
                                 </div>
                                 : timeFrame.timeFrame === 'monthly' ?
                                     <div className='times'>
-                                        <h1>{item.timeframes.monthly.current}hrs</h1>
-                                        <h3>Last Month - {item.timeframes.monthly.previous}hrs</h3>
+                                        {!toggleAddTime[id] ?
+                                            <div className='logged-times-view'>
+                                                <h1>{item.timeframes.daily.current}hrs</h1>
+                                                <h3>Last Month - {item.timeframes.daily.previous}hrs</h3>
+                                            </div>
+                                            :
+                                            <div className="add-time-container">
+                                                <input className='add-time-input' placeholder="0" />
+                                                <h1>hrs</h1>
+                                            </div>
+                                        }
                                     </div>
                                     :
                                     <div className='times'>

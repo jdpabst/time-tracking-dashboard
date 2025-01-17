@@ -3,11 +3,13 @@ import Commitments from '../Commitments/Commitments';
 import './Home.scss';
 
 export default function Home() {
- const [timeFrame, setTimeFrame] = useState()
+ const [timeFrame, setTimeFrame] = useState('daily')
 
  function handleTimeToggle(str) {
   setTimeFrame(str);
  }
+
+ console.log(timeFrame)
 
  return (
   <div className='main-container'>
