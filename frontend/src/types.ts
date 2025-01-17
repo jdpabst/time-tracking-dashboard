@@ -3,6 +3,8 @@ export type UserContextType = {
  setUser: (newValue: User) => void;
  setTimes: (newTimes: Times[]) => void;
  times: Times[];
+ loggedTime: LoggedTime[];
+ setLoggedTime: (newLoggedTime: LoggedTime[]) => void;
 }
 
 // Define a type for the current and previous values in each timeframe
@@ -23,6 +25,12 @@ export interface Times {
  id: number;
  title: string;
  timeframes: Timeframes; // Use the defined Timeframes type here
+}
+
+export interface LoggedTime {
+ createAt: Date;
+ hours: number;
+ timeCommitmentsId: number;
 }
 
 

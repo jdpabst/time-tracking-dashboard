@@ -120,5 +120,28 @@ router.get('/tracked-times', async (req: Request, res: Response) => {
  }
 });
 
+router.post('/logged', async (req: Request, res: Response) => {
+ try {
+  const { createdAt, hours, timeCommitmentsId } = req.body;
+
+  if (!createdAt || !hours || !timeCommitmentsId) {
+   return res.status(400).json({ error: "All fields required: createAt, hours, timeCommitmentsId" })
+  }
+
+  const loggedTime = await prisma.loggedTimes.create({
+   data: {
+    createdAt: new Date(createdAt),
+    hours,
+    timeCommitmentsId
+   },
+
+  })
+
+  res.status(201).json(loggedTime);
+ } catch (error) {
+  res.status(500).send({ error: "Failed to create logged time." })
+ }
+})
+
 
 export default router;

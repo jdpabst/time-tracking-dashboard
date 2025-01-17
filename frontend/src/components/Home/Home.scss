@@ -125,6 +125,12 @@
       font-weight: 400;
       color: hsl(236, 100%, 87%)
      }
+
+     .add-time-container {
+      .add-time-input:focus {
+       outline: none;
+      }
+     }
     }
    }
 

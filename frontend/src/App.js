@@ -6,9 +6,11 @@ import { useUserContext } from './contexts/userStore';
 
 function App() {
   const { setTimes, times } = useUserContext();
+  // const { loggedTime, setLoggedTime } = useUserContext();
 
   useEffect(() => {
     getTrackedTimes();
+    // addLoggedTime();
   }, [])
 
   async function getTrackedTimes() {
@@ -18,6 +20,24 @@ function App() {
   }
 
   // console.log(times)
+
+  // async function addLoggedTime(hours, timeCommitmentsId) {
+  //   try {
+  //     const response = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/logged`, {
+  //       createdAt: new Date().toISOString(),
+  //       hours: hours,
+  //       timeCommitmentsId: timeCommitmentsId
+  //     })
+
+  //     console.log('Logged time added:', response.data);
+
+  //   } catch (error) {
+
+  //     console.error('Error adding logged time:', error);
+  //   }
+
+  // }
+
 
   return (
     <div className="App">
