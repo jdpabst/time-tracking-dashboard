@@ -95,6 +95,7 @@ router.get('/tracked-times', async (req: Request, res: Response) => {
     .reduce((sum, log) => sum + log.hours, 0);
 
    return {
+    id: commitment.id,
     title: commitment.name,
     timeframes: {
      daily: {
@@ -124,8 +125,9 @@ router.post('/logged', async (req: Request, res: Response) => {
  try {
   const { createdAt, hours, timeCommitmentsId } = req.body;
 
-  if (!createdAt || !hours || !timeCommitmentsId) {
-   return res.status(400).json({ error: "All fields required: createAt, hours, timeCommitmentsId" })
+  if (!createdAt || !req.body.hasOwnProperty('hours') || !req.body.hasOwnProperty('timeCommitmentsId')) {
+   console.log(createdAt, hours, timeCommitmentsId)
+   return res.status(400).json({ error: "All fields required: createdAt, hours, timeCommitmentsId" })
   }
 
   const loggedTime = await prisma.loggedTimes.create({
@@ -140,6 +142,7 @@ router.post('/logged', async (req: Request, res: Response) => {
   res.status(201).json(loggedTime);
  } catch (error) {
   res.status(500).send({ error: "Failed to create logged time." })
+  console.log(error)
  }
 })
 

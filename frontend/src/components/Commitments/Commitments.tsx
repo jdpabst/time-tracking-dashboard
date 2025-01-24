@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useUserContext } from 'src/contexts/userStore';
 import './Commitments.scss';
@@ -7,8 +8,9 @@ interface CommitmentsProps {
 }
 
 export default function Commitments(timeFrame) {
-    const { times } = useUserContext();
+    const { times, setTimes } = useUserContext();
     const [toggleAddTime, setToggleAddTime] = useState<Record<number, boolean>>({});
+    const [hours, setHours] = useState(0);
 
     function toggle(id: number) {
         setToggleAddTime((prevState) => ({
@@ -17,36 +19,65 @@ export default function Commitments(timeFrame) {
         }));
     }
 
-    // console.log(timeFrame.timeFrame)
+    async function addLoggedTime(hours, timeCommitmentsId) {
+        try {
+            await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/logged`, {
+                createdAt: new Date().toISOString(),
+                hours: hours,
+                timeCommitmentsId: timeCommitmentsId
+            })
 
+            const trackedTimes = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/tracked-times`);
+
+            setTimes(trackedTimes.data)
+
+
+
+        } catch (error) {
+
+            console.error('Error adding logged time:', error);
+        }
+
+    }
+
+
+    console.log(hours)
+    console.log(times)
     return (
         <div className='commitments-container'>
-            {times.map((item, id) => (
-                <div key={id} className={`${item.title === 'Self Care' ? `self-care` : item.title.toLowerCase()} commitment`}>
-                    <img className='icon' src={`/assets/images/icon-${item.title === 'Self Care' ? `self-care` : item.title.toLowerCase()}.svg`} />
+            {times.map((item, index) => {
+
+                return <div key={index} className={`${item.title === 'Self Care' ? `self-care` : item.title?.toLowerCase()} commitment`}>
+                    <img className='icon' src={`/assets/images/icon-${item.title === 'Self Care' ? `self-care` : item.title?.toLowerCase()}.svg`} />
                     <div className='content'>
                         <div className='heading'>
                             <h2>{item.title}</h2>
-                            <img src='/assets/images/icon-ellipsis.svg' onClick={() => toggle(id)} />
+                            <img src='/assets/images/icon-ellipsis.svg' onClick={() => toggle(index)} />
                         </div>
                         {timeFrame.timeFrame == 'daily' ?
                             <div className='times'>
-                                {!toggleAddTime[id] ?
+                                {!toggleAddTime[index] ?
                                     <div className='logged-times-view'>
                                         <h1>{item.timeframes.daily.current}hrs</h1>
                                         <h3>Yesterday - {item.timeframes.daily.previous}hrs</h3>
                                     </div>
                                     :
                                     <div className="add-time-container">
-                                        <input className='add-time-input' placeholder="0" />
+                                        <input
+                                            name='hours'
+                                            onChange={e => setHours(Number(e.target.value))}
+                                            className='add-time-input'
+                                            placeholder="0"
+                                        />
                                         <h1>hrs</h1>
+                                        <button onClick={() => addLoggedTime(hours, item.id)}>add time</button>
                                     </div>
                                 }
 
                             </div>
                             : timeFrame.timeFrame === 'weekly' ?
                                 <div className='times'>
-                                    {!toggleAddTime[id] ?
+                                    {!toggleAddTime[index] ?
                                         <div className='logged-times-view'>
                                             <h1>{item.timeframes.daily.current}hrs</h1>
                                             <h3>Last Week - {item.timeframes.daily.previous}hrs</h3>
@@ -60,7 +91,7 @@ export default function Commitments(timeFrame) {
                                 </div>
                                 : timeFrame.timeFrame === 'monthly' ?
                                     <div className='times'>
-                                        {!toggleAddTime[id] ?
+                                        {!toggleAddTime[index] ?
                                             <div className='logged-times-view'>
                                                 <h1>{item.timeframes.daily.current}hrs</h1>
                                                 <h3>Last Month - {item.timeframes.daily.previous}hrs</h3>
@@ -80,7 +111,7 @@ export default function Commitments(timeFrame) {
 
                     </div>
                 </div>
-            ))}
+            })}
             {/* <div className='work commitment'>
     <img className='icon' src='/assets/images/icon-work.svg' />
     <div className='content'>
